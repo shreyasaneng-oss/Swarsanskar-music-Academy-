@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -27,7 +26,7 @@ box-sizing:border-box;
 
 body{
 font-family:'DM Sans',sans-serif;
-background:linear-gradient(135deg, #9c6137, #cc9966, #fffddd,  #fffef6);
+background:linear-gradient(135deg,#9c6137,#cc9966,#fffddd,#fffef6);
 display:flex;
 align-items:center;
 justify-content:center;
@@ -40,8 +39,6 @@ width:100%;
 max-width:450px;
 }
 
-/* BRAND */
-
 .brand{
 text-align:center;
 margin-bottom:25px;
@@ -53,10 +50,9 @@ height:120px;
 object-fit:cover;
 border-radius:50%;
 border:3px solid #c9a84c;
-padding:0px;
 background:white;
 display:block;
-margin:0 auto 0px auto;
+margin:0 auto;
 box-shadow:0 4px 15px rgba(201,168,76,0.35);
 }
 
@@ -81,8 +77,6 @@ font-size:14px;
 color:var(--muted);
 }
 
-/* CARD */
-
 .card{
 background:white;
 border-radius:15px;
@@ -90,8 +84,6 @@ border:1px solid var(--border);
 overflow:hidden;
 box-shadow:0 6px 30px rgba(0,0,0,0.08);
 }
-
-/* TABS */
 
 .tabs{
 display:flex;
@@ -114,8 +106,6 @@ background:white;
 color:var(--gold-dark);
 border-bottom:2px solid var(--gold);
 }
-
-/* FORM */
 
 .form-body{
 padding:25px;
@@ -141,14 +131,6 @@ border-radius:7px;
 border:1px solid rgba(201,168,76,0.3);
 font-size:14px;
 background:var(--surface);
-transition:all .2s ease;
-}
-
-.field input:focus,
-.field select:focus{
-border-color:var(--gold);
-background:white;
-outline:none;
 }
 
 .row-2{
@@ -156,8 +138,6 @@ display:grid;
 grid-template-columns:1fr 1fr;
 gap:10px;
 }
-
-/* BUTTON */
 
 .btn-primary{
 width:100%;
@@ -171,12 +151,6 @@ letter-spacing:2px;
 font-size:12px;
 cursor:pointer;
 }
-
-.btn-primary:hover{
-opacity:.9;
-}
-
-/* CHECKBOX */
 
 .checkbox-row{
 display:flex;
@@ -193,8 +167,6 @@ display:none;
 display:block;
 }
 
-/* FOOTER */
-
 .card-footer{
 padding:14px;
 text-align:center;
@@ -205,6 +177,8 @@ background:var(--surface2);
 .card-footer a{
 cursor:pointer;
 color:var(--gold-dark);
+text-decoration:none;
+font-weight:500;
 }
 
 </style>
@@ -238,13 +212,13 @@ color:var(--gold-dark);
 <form class="form-panel active" id="panel-signin">
 
 <div class="field">
-<label>Email Address</label>
-<input type="email" name="email" placeholder="you@example.com" required>
+<label>Username</label>
+<input type="text" id="adminUser" placeholder="Enter username" required>
 </div>
 
 <div class="field">
 <label>Password</label>
-<input type="password" name="password" minlength="8" placeholder="••••••••" required>
+<input type="password" id="adminPass" placeholder="Enter password" required>
 </div>
 
 <button type="submit" class="btn-primary">Sign In</button>
@@ -259,24 +233,24 @@ color:var(--gold-dark);
 
 <div class="field">
 <label>First Name</label>
-<input type="text" name="firstname" placeholder="Arjun" required>
+<input type="text" name="firstname" required>
 </div>
 
 <div class="field">
 <label>Last Name</label>
-<input type="text" name="lastname" placeholder="Sharma" required>
+<input type="text" name="lastname" required>
 </div>
 
 </div>
 
 <div class="field">
 <label>Email</label>
-<input type="email" name="email" placeholder="you@example.com" required>
+<input type="email" name="email" required>
 </div>
 
 <div class="field">
 <label>Phone</label>
-<input type="tel" name="phone" pattern="[0-9]{10}" placeholder="9876543210" required>
+<input type="tel" pattern="[0-9]{10}" name="phone" required>
 </div>
 
 <div class="field">
@@ -291,7 +265,7 @@ color:var(--gold-dark);
 
 <div class="field">
 <label>Password</label>
-<input type="password" name="password" minlength="8" placeholder="Min 8 characters" required>
+<input type="password" name="password" minlength="8" required>
 </div>
 
 <div class="checkbox-row">
@@ -331,11 +305,40 @@ tab==='signin'
 
 }
 
-document.querySelectorAll("form").forEach(form=>{
-form.addEventListener("submit",function(e){
+/* ADMIN LOGIN */
+
+document.getElementById("panel-signin").addEventListener("submit",function(e){
+
 e.preventDefault()
-alert("Form submitted successfully")
+
+let username=document.getElementById("adminUser").value
+let password=document.getElementById("adminPass").value
+
+if(username==="ADMIN" && password==="SWARSHREYAS"){
+
+alert("Admin Login Successful")
+
+window.location.href="panel.html"
+
+}
+else{
+
+alert("Invalid Admin Credentials")
+
+}
+
 })
+
+/* SIGNUP DEMO */
+
+document.getElementById("panel-signup").addEventListener("submit",function(e){
+
+e.preventDefault()
+
+alert("Registration Successful!")
+
+this.reset()
+
 })
 
 </script>
